@@ -1,0 +1,5 @@
+outs:
+- md5: 311775e4576621f13f40e5ec06cf0ed1
+  size: 438131
+  hash: md5
+  path: totalComplete.csv
