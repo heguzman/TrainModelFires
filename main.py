@@ -66,13 +66,13 @@ def process_combination(args):
     columnsImage = column.copy()
     if 'Burn_Classification' in columnsImage:
         columnsImage.remove('Burn_Classification')
-    process_csv(columnsImage, f"{folder}/dataImage.csv", "ImageComplete.csv")
+    process_csv(columnsImage, f"{folder}/dataImage.csv", "data/ImageComplete.csv")
     csv_image = f"{folder}/dataImage.csv"
     scaler = f"{folder}/scaler.pkl"
     model = f"{folder}/GBPO_model.pkl"
     modelName = "GBPO"
     predict_with_trained_model(model, scaler, csv_image, modelName, folder)
-    printImage(f"{folder}/image_predicted_{modelName}.csv", "ImageComplete.csv", modelName, folder)
+    printImage(f"{folder}/image_predicted_{modelName}.csv", "data/ImageComplete.csv", modelName, folder)
     return metrics
 
 # Función para combinar todos los CSV de métricas

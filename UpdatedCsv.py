@@ -49,5 +49,5 @@ def filter_csv_columns(input_file, output_file, columns_to_keep):
         return False
 
 
-def process_csv(columns_to_keep, output_file, filerOriginal="totalComplete.csv"):
+def process_csv(columns_to_keep, output_file, filerOriginal="data/totalComplete.csv"):
     filter_csv_columns(filerOriginal, output_file, columns_to_keep)
