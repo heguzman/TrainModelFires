@@ -51,21 +51,25 @@ El proyecto espera encontrar al menos los siguientes archivos en la carpeta `dat
    git clone <URL-del-repositorio>
    cd TrainModelFires
    ```
-2. (Opcional) Crea y activa un entorno virtual:
-   ```bash
-   python -m venv venv
-   # En Windows:
-   venv\Scripts\activate
-   # En Linux/Mac:
-   source venv/bin/activate
-   ```
+2. (Recomendado) Crea y activa un entorno virtual para aislar las dependencias del proyecto:
+   - Con venv (Python estándar):
+     ```bash
+     python -m venv venv
+     # En Windows:
+     venv\Scripts\activate
+     # En Linux/Mac:
+     source venv/bin/activate
+     ```
+   - Con conda (opcional):
+     ```bash
+     conda create -n fires_env python=3.10
+     conda activate fires_env
+     ```
 3. Instala las dependencias necesarias:
    ```bash
    pip install -r requirements.txt
    ```
-   > Si no existe el archivo `requirements.txt`, puedes generarlo con las siguientes dependencias sugeridas:
-   >
-   > pandas, numpy, scikit-learn, matplotlib, seaborn, pillow
+   > Esto instalará todas las librerías requeridas para ejecutar el proyecto, incluyendo pandas, numpy, scikit-learn, matplotlib, seaborn, pillow, scipy y dvc[gdrive].
 
 ---
 
@@ -99,6 +103,26 @@ python testModel.py
 2. Entrenar el modelo con `trainClassificationModel.py` o mediante `main.py`.
 3. Evaluar el modelo y realizar predicciones con `testModel.py`.
 4. Visualizar los resultados con `plotImage.py`.
+
+---
+
+## Ejecución con Docker
+
+También puedes ejecutar el proyecto en un contenedor Docker para máxima portabilidad y reproducibilidad.
+
+### 1. Construir la imagen Docker
+```bash
+docker build -t trainmodelfires .
+```
+
+### 2. Ejecutar el contenedor
+```bash
+docker run -it --rm trainmodelfires
+```
+
+Esto ejecutará el flujo principal definido en `main.py` dentro del contenedor.
+
+> Si necesitas montar volúmenes de datos, exponer puertos o cambiar el comando de inicio, puedes adaptar el comando `docker run` según tus necesidades.
 
 ---
 
