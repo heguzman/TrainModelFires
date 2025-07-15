@@ -38,13 +38,23 @@ def process_combination(args):
     columnsImage = column.copy()
     if 'Burn_Classification' in columnsImage:
         columnsImage.remove('Burn_Classification')
-    process_csv(columnsImage, f"{folder}/dataImage.csv", "ImageComplete.csv")
+    process_csv(columnsImage, f"{folder}/dataImage.csv", "data/raw/ImageComplete.csv")
     csv_image = f"{folder}/dataImage.csv"
     scaler = f"{folder}/scaler.pkl"
     model = f"{folder}/GBPO_model.pkl"
     modelName = "GBPO"
     predict_with_trained_model(model, scaler, csv_image, modelName, folder)
-    printImage(f"{folder}/image_predicted_{modelName}.csv", "ImageComplete.csv", modelName, folder)
+    printImage(f"{folder}/image_predicted_{modelName}.csv", "data/raw/ImageComplete.csv", modelName, folder)
+    archivos_a_borrar = [
+        f"{folder}/dataImage.csv",
+        f"{folder}/image_predicted_{modelName}.csv"
+    ]
+    for archivo in archivos_a_borrar:
+        if os.path.exists(archivo):
+            os.remove(archivo)
+            print(f"Archivo {archivo} eliminado.")
+        else:
+            print(f"Archivo {archivo} no existe, no se elimina.")
     return metrics
 
 def combine_all_metrics():

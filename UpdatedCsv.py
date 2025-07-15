@@ -28,6 +28,10 @@ def filter_csv_columns(input_file, output_file, columns_to_keep):
                     print(f"Error: La columna '{column}' no existe en el archivo original.")
                     print(f"Columnas disponibles: {all_columns}")
                     return False
+            # === Agrega estos prints de depuración aquí ===
+            print(f"Intentando abrir: {input_file}")
+            print(f"Directorio actual: {os.getcwd()}")
+            print(f"Archivos en data/raw: {os.listdir('data/raw')}")
 
             with open(output_file, 'w', newline='') as outfile:
                 writer = csv.DictWriter(outfile, fieldnames=columns_to_keep)
