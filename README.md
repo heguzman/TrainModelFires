@@ -117,7 +117,7 @@ docker build -t trainmodelfires .
 
 ### 2. Ejecutar el contenedor
 ```bash
-docker run -it --rm trainmodelfires
+docker run -it --rm `  -v "${PWD}\data:/app/data" `  -v "${PWD}\pruebas:/app/pruebas" `  trainmodelfires
 ```
 
 Esto ejecutará el flujo principal definido en `main.py` dentro del contenedor.

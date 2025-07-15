@@ -6,3 +6,4 @@ seaborn
 pillow
 scipy
 dvc[gdrive] 
+kfp
